@@ -13,16 +13,16 @@
 
   <p>
 
-    Etes-vous certain de vouloir supprimer l'annonce "{{ category.id }}" ?
+    Etes-vous certain de vouloir supprimer l'annonce "{{ product.id }}" ?
 
   </p>
 
 
   {# On met l'id de l'annonce dans la route de l'action du formulaire #}
 
-  <form action="{{ path('app_category_delete', {'id': category.id}) }}" method="post">
+  <form action="{{ path('app_product_delete', {'id': product.id}) }}" method="post">
 
-    <a href="{{ path('app_categories', {'id': category.id}) }}" class="btn btn-default">
+    <a href="{{ path('app_products', {'id': product.id}) }}" class="btn btn-default">
 
       <i class="glyphicon glyphicon-chevron-left"></i>
 
@@ -39,5 +39,8 @@
     {{ form_rest(form) }}
 
   </form>
+
+
+{% endblock %}
 
 {% endblock %}

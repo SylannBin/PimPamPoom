@@ -144,7 +144,7 @@ public function createAction(Request $request)
 
     return $this->render('AppBundle:Product:delete.html.twig', array(
 
-      'Product' => $product,
+      'product' => $product,
 
       'form'   => $form->createView()
 
