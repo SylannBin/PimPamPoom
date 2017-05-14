@@ -1,0 +1,35 @@
+app_default:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+
+app_products:
+    path:     /Products
+    defaults: { _controller: AppBundle:Product:index }
+
+app_categories:
+    path:     /Categories
+    defaults: { _controller: AppBundle:Category:index }
+
+app_product_create:
+    path:     /Product/Create
+    defaults: { _controller: AppBundle:Product:Create }
+    
+app_product_change:
+    path:     /Product/Change
+    defaults: { _controller: AppBundle:Product:Change }
+
+app_product_delete:
+    path:     /Product/Delete
+    defaults: { _controller: AppBundle:Product:Delete }
+
+app_category:
+    path:     /Category/Create
+    defaults: { _controller: AppBundle:Category:Create }
+
+app_category:
+    path:     /Category/Change
+    defaults: { _controller: AppBundle:Category:Change }
+
+app_category:
+    path:     /Category/Delete
+    defaults: { _controller: AppBundle:Category:Delete }

@@ -1,0 +1,41 @@
+{% extends "TsukaimaBundle::base.html.twig" %}
+{% block title %}TsukaimaBundle:User:register{% endblock %}
+{% block body %}
+
+  <h1>Welcome to the User:register page</h1>
+  <h2>Fullfil the form to register yourself</h2>
+
+  {% if response is defined %}
+    <div class="alert alert-info">
+      {{ response.content }}
+    </div>
+  {% endif %}
+
+  <section id="register" style="max-width:1000px">
+      <form class="form-horizontal" action="{{ path('tsukaima_user_create') }}">
+        <div class="form-group">
+          <div class="col-xs-6 text-right"><label for="em">Name (Family) *</label></div>
+          <div class="col-xs-6"><input  id="nq" type="text" name="name" class="form-control" placeholder="Dakascos"></div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-6 text-right"><label for="em">Firstname *</label></div>
+          <div class="col-xs-6"><input  id="fn" type="text" name="firstname" class="form-control" placeholder="Mark"></div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-6 text-right"><label for="em">Email address *</label></div>
+          <div class="col-xs-6"><input  id="em" type="email" name="email"     class="form-control" placeholder="abc@def.com"></div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-6 text-right"><label for="em">Date of birth</label></div>
+          <div class="col-xs-6"><input  id="bd" type="date" name="birthdate" class="form-control" placeholder="yyyy-mm-dd"></div>
+        </div>
+        <div class="form-group">
+          <div class="col-xs-6 text-right"><label for="em">Company</label></div>
+          <div class="col-xs-6"><input  id="co" type="text" name="company"   class="form-control" placeholder="E-corp"></div>
+        </div>
+        <button type="submit" class="btn btn-default">Register</button>
+      </form>
+      </div>
+  </section>
+
+{% endblock %}
