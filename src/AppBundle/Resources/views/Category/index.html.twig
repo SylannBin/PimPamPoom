@@ -6,7 +6,7 @@
 <h1>The Category Page</h1>
 
   {# Table #}
-  <div style="padding:10px;background:#fff; border-radius:2px">
+  <div class="ppp-table-container">
       <table class="table table-striped">
         <thead>
           <a href="{{ path('app_category_create') }}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Ajouter Catégorie</a>
@@ -20,12 +20,12 @@
         <tbody>
         {% for c in categories %}
           
-          <tr>
+          <tr class="ppp-action-container">
             <td>{{ c.id }}</td>
             <td>{{ c.labelEn }}</td>
             <td>{{ c.labelFr }}</td>
             <td>{{ c.labelDe }}</td>
-            <td class="text-center">
+            <td class="text-center ppp-action-block">
               <a class='btn btn-info btn-xs' href="{{ path('app_category_change', {'id': c.id})}}"><span class="glyphicon glyphicon-edit"></span></a>
               <a class="btn btn-danger btn-xs" href="{{ path('app_category_delete', {'id': c.id})}}"><span class="glyphicon glyphicon-remove"></span></a>
             </td>
