@@ -5,5 +5,40 @@
 {% block body %}
 <h1>The Product Page</h1>
 
+  {# Table #}
+  <div style="padding:10px;background:#fff; border-radius:2px">
+      <table class="table table-striped">
+        <thead>
+          <a href="{{ path('app_product_create') }}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add Product</a>
+          <tr>
+            <th class="text-center">Id</th>
+            <th class="text-center">Category</th>
+            <th class="text-center">Label</th>
+            <th class="text-center">Libellé</th>
+            <th class="text-center">Etikett</th>
+            <th class="text-center">Price</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for p in products %}
+          
+          <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.category }}</td>
+            <td>{{ p.labelEn }}</td>
+            <td>{{ p.labelFr }}</td>
+            <td>{{ p.labelDe }}</td>
+            <td>{{ p.price }}</td>
+            <td class="text-center">
+              <a class='btn btn-info btn-xs' href="{{ path('app_product_change', {'id': p.id})}}"><span class="glyphicon glyphicon-edit"></span></a>
+              <a class="btn btn-danger btn-xs" href="{{ path('app_product_delete', {'id': p.id})}}"><span class="glyphicon glyphicon-remove"></span></a>
+            </td>
+          </tr>
+
+        {% endfor %}
+        </tbody>
+      </table>
+  </div>
+
 
 {% endblock %}

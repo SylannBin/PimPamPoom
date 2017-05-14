@@ -10,12 +10,28 @@ class CategoryController extends Controller
 {
     public function indexAction(Request $request)
     {
-        // une seule catégorie
-        //todo: liste de catégories
-        $category = new Category();
+        $categories = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Category')
+            ->findAll();
 
         return $this->render('AppBundle:Category:index.html.twig', array(
-            'category' => $category
+            'categories' => $categories
         ));
+    }
+
+    public function createAction()
+    {
+        return $this->render('AppBundle:Category:create.html.twig');
+    }
+
+    public function changeAction($id)
+    {
+        return $this->render('AppBundle:Category:change.html.twig');
+    }
+
+    public function deleteAction($id)
+    {
+        return $this->render('AppBundle:Category:delete.html.twig');
     }
 }

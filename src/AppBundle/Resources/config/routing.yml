@@ -10,26 +10,36 @@ app_categories:
     path:     /Categories
     defaults: { _controller: AppBundle:Category:index }
 
+
 app_product_create:
     path:     /Product/Create
     defaults: { _controller: AppBundle:Product:Create }
     
 app_product_change:
-    path:     /Product/Change
+    path:     /Product/Change/{id}
     defaults: { _controller: AppBundle:Product:Change }
+    requirements:
+        id: '\d+'
 
 app_product_delete:
-    path:     /Product/Delete
+    path:     /Product/Delete/{id}
     defaults: { _controller: AppBundle:Product:Delete }
+    requirements:
+        id: '\d+'
 
-app_category:
+
+app_category_create:
     path:     /Category/Create
     defaults: { _controller: AppBundle:Category:Create }
 
-app_category:
-    path:     /Category/Change
+app_category_change:
+    path:     /Category/Change/{id}
     defaults: { _controller: AppBundle:Category:Change }
+    requirements:
+        id: '\d+'
 
-app_category:
-    path:     /Category/Delete
+app_category_delete:
+    path:     /Category/Delete/{id}
     defaults: { _controller: AppBundle:Category:Delete }
+    requirements:
+        id: '\d+'

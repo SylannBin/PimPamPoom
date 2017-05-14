@@ -10,12 +10,28 @@ class ProductController extends Controller
 {
     public function indexAction(Request $request)
     {
-        // un seul produit
-        //todo: liste de produits
-        $product = new Product();
+        $products = $this
+            ->getDoctrine()
+            ->getRepository('AppBundle:Product')
+            ->findAll();
 
         return $this->render('AppBundle:Product:index.html.twig', array(
-            'product' => $product
+            'products' => $products
         ));
+    }
+
+    public function createAction()
+    {
+        return $this->render('AppBundle:Product:create.html.twig');
+    }
+
+    public function changeAction($id)
+    {
+        return $this->render('AppBundle:Product:change.html.twig');
+    }
+
+    public function deleteAction($id)
+    {
+        return $this->render('AppBundle:Product:delete.html.twig');
     }
 }
