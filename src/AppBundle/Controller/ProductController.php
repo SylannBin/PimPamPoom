@@ -5,11 +5,13 @@ namespace AppBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Product;
+use AppBundle\Entity\Category;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class ProductController extends Controller
 {
@@ -30,10 +32,18 @@ class ProductController extends Controller
   // Create a product and add it to the database
   public function createAction(Request $request)
   {
+    $categories = $this
+      ->getDoctrine()
+      ->getRepository('AppBundle:Category')
+      ->findAll();
+
     $product = new Product();
 
     $form = $this->createFormBuilder($product)
-      ->add('category',          IntegerType::class)   
+      ->add('category',      ChoiceType::class, array(
+        'label' => "Category",
+        'choices'  => array($categories)
+      ))
       ->add('labelEn',           TextType::class, array('required' => false))
       ->add('labelFr',           TextType::class, array('required' => false))
       ->add('labelDe',           TextType::class, array('required' => false))
@@ -56,7 +66,10 @@ class ProductController extends Controller
       $em->persist($product);
       $em->flush();
 
-      $request->getSession()->getFlashBag()->add('notice', 'Produit enregistrée.');
+      $request
+        ->getSession()
+        ->getFlashBag()
+        ->add('notice', 'Product registered.');
       // Redirect to the product page
       return $this->redirect($this->generateUrl('app_products'));
     }
@@ -75,7 +88,7 @@ class ProductController extends Controller
     $product = $em->getRepository('AppBundle:Product')->find($id);
 
     if (null === $product) {
-      throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+      throw new NotFoundHttpException("No product with id=".$id." were found.");
     }
 
     $form = $this->createFormBuilder()->getForm();
@@ -100,15 +113,26 @@ class ProductController extends Controller
   {
     $em = $this->getDoctrine()->getManager();
 
+    $categories = $this
+      ->getDoctrine()
+      ->getRepository('AppBundle:Category')
+      ->findAll();
+
     // Get the product with $id
-    $product = $em->getRepository('AppBundle:Product')->find($id);
+    $product = $em
+      ->getRepository('AppBundle:Product')
+      ->find($id);
 
     if (null === $product) {
-      throw new NotFoundHttpException("The product n° ".$id." doesn't exist.");
+      throw new NotFoundHttpException("No product with id=".$id." were found.");
     }
 
-    $form = $this->createFormBuilder($product)
-      ->add('category',      IntegerType::class)   
+    $form = $this
+      ->createFormBuilder($product)
+      ->add('category',      ChoiceType::class, array(
+        'label' => "Category",
+        'choices'  => array($categories)
+      ))
       ->add('labelEn',       TextType::class, array('required' => false))
       ->add('labelFr',       TextType::class, array('required' => false))
       ->add('labelDe',       TextType::class, array('required' => false))

@@ -76,7 +76,7 @@ class CategoryController extends Controller
 
     // Handle null category
     if (null === $category) {
-      throw new NotFoundHttpException("L'annonce d'id ".$id." n'existe pas.");
+      throw new NotFoundHttpException("No category with id=".$id." were found.");
     }
 
     // Build the form
