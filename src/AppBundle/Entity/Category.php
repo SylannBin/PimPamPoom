@@ -24,21 +24,21 @@ class Category
     /**
      * @var string
      *
-     * @ORM\Column(name="label_en", type="string", length=50)
+     * @ORM\Column(name="label_en", type="string", length=50, nullable=true)
      */
     private $labelEn;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="label_fr", type="string", length=50)
+     * @ORM\Column(name="label_fr", type="string", length=50, nullable=true)
      */
     private $labelFr;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="label_de", type="string", length=50)
+     * @ORM\Column(name="label_de", type="string", length=50, nullable=true)
      */
     private $labelDe;
 
