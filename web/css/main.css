@@ -1,0 +1,36 @@
+.sf-dump{
+    text-align: left;
+}
+
+html, body, #navigation, .navbar-fixed-top{
+    width:100%;
+}
+
+.navbar-fixed-top > .container-fluid{
+    width:70%;
+    margin: 0 auto;
+}
+
+#content{
+    background: #F0F3F6;
+    width:80%;
+    margin: 65px auto 0;
+    padding: 25px;
+    border-radius: 2px;
+    text-align:center;
+}
+
+h1,h2,h3 {
+	margin:0 0 35px 0;
+	font-family: 'Patua One', cursive;
+	text-transform: uppercase;
+	letter-spacing:1px;
+}
+p{
+	margin:0 0 25px;
+	font-size:18px;
+	line-height:1.6em;
+}
+textarea.form-control{
+    height:100px;
+}
