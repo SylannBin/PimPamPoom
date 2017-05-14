@@ -24,8 +24,7 @@ class Product
     /**
      * @var Category
      *
-     * @ORM\Column(name="Category", type="integer")
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="products")
      * @ORM\JoinColumn(name="category", referencedColumnName="id")
      */
     private $category;
@@ -375,4 +374,3 @@ class Product
         return $this->price;
     }
 }
-

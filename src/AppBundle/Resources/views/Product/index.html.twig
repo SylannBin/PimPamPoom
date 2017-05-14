@@ -24,10 +24,26 @@
           
           <tr class="ppp-action-container">
             <td>{{ p.id }}</td>
-            <td>{{ p.category }}</td>
+            <td>{{ p.category.id is null ? "-" : p.category.id }}</td>
+            
+            {% if p.labelEn is null %}
+            <td class="ppp-not-translated">Not translated</td>
+            {% else %}
             <td>{{ p.labelEn }}</td>
+            {% endif %}
+            
+            {% if p.labelFr is null %}
+            <td class="ppp-not-translated">Non traduit</td>
+            {% else %}
             <td>{{ p.labelFr }}</td>
+            {% endif %}
+            
+            {% if p.labelDe is null %}
+            <td class="ppp-not-translated">Nicht übersetzt</td>
+            {% else %}
             <td>{{ p.labelDe }}</td>
+            {% endif %}
+
             <td>{{ p.price }}</td>
             <td class="text-center ppp-action-block">
               <a class='btn btn-info btn-xs' href="{{ path('app_product_change', {'id': p.id})}}"><span class="glyphicon glyphicon-edit"></span></a>
