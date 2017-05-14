@@ -1,56 +1,54 @@
 {% extends "AppBundle::base.html.twig" %}
 
-{% block title %}AppBundle:Category:index{% endblock %}
+{% block title %}List of categories{% endblock %}
 
 {% block body %}
-<h1>The Category Page</h1>
+<h2>Categories overview</h2>
 
   {# Table #}
   <div class="ppp-table-container">
-      <table class="table table-striped">
-        <thead>
-          <a href="{{ path('app_category_create') }}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Ajouter Catégorie</a>
-          <tr>
-            <th class="text-center">Id</th>
-            <th class="text-center">Label (en)</th>
-            <th class="text-center">Libellé (fr)</th>
-            <th class="text-center">Etikett (de)</th>
-          </tr>
-        </thead>
-        <tbody>
-        {% for c in categories %}
+    <table class="table table-striped">
+      <thead>
+        <a href="{{ path('app_category_create') }}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus"></span> Add category</a>
+        <tr>
+          <th class="text-center">Id</th>
+          <th class="text-center">Label (en)</th>
+          <th class="text-center">Libellé (fr)</th>
+          <th class="text-center">Etikett (de)</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for c in categories %}
+        
+        <tr class="ppp-action-container">
+          <td>{{ c.id }}</td>
+
+          {% if c.labelEn is null %}
+          <td class="ppp-not-translated">Not translated</td>
+          {% else %}
+          <td>{{ c.labelEn }}</td>
+          {% endif %}
           
-          <tr class="ppp-action-container">
-            <td>{{ c.id }}</td>
+          {% if c.labelFr is null %}
+          <td class="ppp-not-translated">Non traduit</td>
+          {% else %}
+          <td>{{ c.labelFr }}</td>
+          {% endif %}
+          
+          {% if c.labelDe is null %}
+          <td class="ppp-not-translated">Nicht übersetzt</td>
+          {% else %}
+          <td>{{ c.labelDe }}</td>
+          {% endif %}
 
-            {% if c.labelEn is null %}
-            <td class="ppp-not-translated">Not translated</td>
-            {% else %}
-            <td>{{ c.labelEn }}</td>
-            {% endif %}
-            
-            {% if c.labelFr is null %}
-            <td class="ppp-not-translated">Non traduit</td>
-            {% else %}
-            <td>{{ c.labelFr }}</td>
-            {% endif %}
-            
-            {% if c.labelDe is null %}
-            <td class="ppp-not-translated">Nicht übersetzt</td>
-            {% else %}
-            <td>{{ c.labelDe }}</td>
-            {% endif %}
+          <td class="text-center ppp-action-block">
+            <a class='btn btn-info btn-xs' href="{{ path('app_category_change', {'id': c.id})}}"><span class="glyphicon glyphicon-edit"></span></a>
+            <a class="btn btn-danger btn-xs" href="{{ path('app_category_delete', {'id': c.id})}}"><span class="glyphicon glyphicon-remove"></span></a>
+          </td>
+        </tr>
 
-            <td class="text-center ppp-action-block">
-              <a class='btn btn-info btn-xs' href="{{ path('app_category_change', {'id': c.id})}}"><span class="glyphicon glyphicon-edit"></span></a>
-              <a class="btn btn-danger btn-xs" href="{{ path('app_category_delete', {'id': c.id})}}"><span class="glyphicon glyphicon-remove"></span></a>
-            </td>
-          </tr>
-
-        {% endfor %}
-        </tbody>
-      </table>
+      {% endfor %}
+      </tbody>
+    </table>
   </div>
-
-
 {% endblock %}

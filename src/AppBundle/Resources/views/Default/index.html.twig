@@ -5,4 +5,17 @@
 <h1>Homepage PimPamPoom</h1>
 <p>The current Twig version is {{ constant('Twig_Environment::VERSION') }}</p>
 
+<div class="well ppp-welcome">
+    <p>Welcome to Pim Pam Poom! The best Product information manager in the wooorld!</p>
+    <p>... Well, almost</p>
+    <p>... Not even close.</p>
+</div>
+
+<div class="ppp-stat-window">
+    Number of products: {{ nbProducts }}
+</div>
+<div class="ppp-stat-window">
+    Number of categories: {{ nbCategories }}
+</div>
+
 {% endblock %}

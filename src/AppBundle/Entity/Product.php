@@ -113,7 +113,7 @@ class Product
     /**
      * Set category
      *
-     * @param integer $category
+     * @param Category $category
      *
      * @return Product
      */
@@ -127,7 +127,7 @@ class Product
     /**
      * Get category
      *
-     * @return int
+     * @return Category
      */
     public function getCategory()
     {

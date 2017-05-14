@@ -1,25 +1,18 @@
 {% extends "AppBundle::base.html.twig" %}
 
-{% block title %}AppBundle:Product:index{% endblock %}
+{% block title %}New Product{% endblock %}
 
 {% block body %}
-<h1>The Product Page</h1>
-
-<h3>Formulaire d'annonce</h3>
-
+<h2>Product Creation</h2>
 
 <div class="well">
 
   {{ form(form) }}
 
+  <a href="{{ path('app_products') }}" class="btn btn-default">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Cancel
+  </a>
 </div>
-
-   <a href="{{ path('app_products') }}" class="btn btn-default">
-
-      <i class="glyphicon glyphicon-chevron-left"></i>
-
-      Retour
-
-    </a>
 
 {% endblock %}

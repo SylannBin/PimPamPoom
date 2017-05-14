@@ -9,6 +9,13 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-       return $this->render('AppBundle:Default:index.html.twig');
+        $nbProducts = 10;
+        $nbCategories = 10;
+
+
+       return $this->render('AppBundle:Default:index.html.twig', array(
+           "nbProducts" => $nbProducts,
+           "nbCategories" => $nbCategories
+       ));
     }
 }
