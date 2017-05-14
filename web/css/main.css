@@ -60,3 +60,8 @@ textarea.form-control{
 .ppp-not-translated {
     color: #ccc;
 }
+
+.ppp-middle-form{
+    width: 400px;
+    margin: 0 auto;
+}

@@ -1,35 +1,18 @@
 {% extends "AppBundle::base.html.twig" %}
 
-{% block title %}AppBundle:Category:index{% endblock %}
+{% block title %}New Category{% endblock %}
 
 {% block body %}
-<h1>The Category Page</h1>
-
-<h3>Formulaire d'annonce</h3>
-
+<h2>Category Creation</h2>
 
 <div class="well">
 
   {{ form(form) }}
-
+  
+  <a href="{{ path('app_categories') }}" class="btn btn-default">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Retour
+  </a>
 </div>
-
-
-
-    <a href="{{ path('app_categories') }}" class="btn btn-default">
-
-      <i class="glyphicon glyphicon-chevron-left"></i>
-
-      Retour
-
-    </a>
-
-
-
-
- 
-
-
-
 
 {% endblock %}
