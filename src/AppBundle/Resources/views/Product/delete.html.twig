@@ -1,29 +1,26 @@
 {% extends "AppBundle::base.html.twig" %}
-
 {% block title %}Remove Product{% endblock %}
-
 {% block body %}
+
 <h2>Product removal</h2>
 
-  {% block ocplatform_body %}
-  <div class="well ppp-middle-form">
+<div class="well ppp-middle-form">
 
-    <div class="alert alert-danger">
-      <strong>Attention!</strong> Do you really want to delete the product <strong>"{{ product.labelEn }}"</strong>?
-    </div>
-
-    <form action="{{ path('app_product_delete', {'id': product.id}) }}" method="post">
-
-      <a href="{{ path('app_products', {'id': product.id}) }}" class="btn btn-default">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        Cancel
-      </a>
-
-      <input type="submit" value="Supprimer" class="btn btn-danger" />
-
-      {{ form_rest(form) }}
-    </form>
+  <div class="alert alert-danger">
+    <strong>Attention!</strong> Do you really want to delete the product <strong>"{{ product.labelEn }}"</strong>?
   </div>
-  {% endblock %}
+
+  <form action="{{ path('app_product_delete', {'id': product.id}) }}" method="post">
+
+    <a href="{{ path('app_products', {'id': product.id}) }}" class="btn btn-default">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      Cancel
+    </a>
+
+    <input type="submit" value="Supprimer" class="btn btn-danger" />
+
+  </form>
+
+</div>
 
 {% endblock %}

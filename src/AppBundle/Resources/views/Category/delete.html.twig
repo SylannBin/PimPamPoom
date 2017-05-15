@@ -1,39 +1,35 @@
 {% extends "AppBundle::base.html.twig" %}
-
 {% block title %}Remove category{% endblock %}
-
 {% block body %}
+
 <h2>Category removal</h2>
 
-  {% block ocplatform_body %}
-  <div class="ppp-middle-form">
-    {% if category.products | length > 0 %}
+<div class="ppp-middle-form">
 
-    <div class="alert alert-info">
-      You can't delete this category.<br/>
-      It is currently <strong>used by {{ category.products | length }} products</strong>
-    </div>
-
-    {% else %}
-
-    <div class="alert alert-danger">
-      <strong>Attention!</strong> Do you really want to delete the category <strong>"{{ category.labelEn }}"</strong>?
-    </div>
-
-    <form action="{{ path('app_category_delete', {'id': category.id}) }}" method="post">
-
-      <a href="{{ path('app_categories', {'id': category.id}) }}" class="btn btn-default">
-        <span class="glyphicon glyphicon-chevron-left"></span>
-        Cancel
-      </a>
-
-      <input type="submit" value="Delete {{ category.labelEn }}" class="btn btn-danger" />
-
-      {{ form_rest(form) }}
-    </form>
-
-    {% endif %}
+  {% if category.products | length == 0 %}
+  <div class="alert alert-danger">
+    <strong>Attention!</strong> Do you really want to delete the category <strong>"{{ category.labelEn }}"</strong>?
   </div>
-  {% endblock %}
+  {% else %}
+  <div class="alert alert-info">
+    You can't delete this category.<br/>
+    It is currently <strong>used by {{ category.products | length }} products</strong>
+  </div>
+  {% endif %}
+
+  <form action="{{ path('app_category_delete', {'id': category.id}) }}" method="post">
+
+    <a href="{{ path('app_categories', {'id': category.id}) }}" class="btn btn-default">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      Cancel
+    </a>
+
+    {% if category.products | length == 0 %}
+    <input type="submit" value="Delete {{ category.labelEn }}" class="btn btn-danger" />
+    {% endif %}
+
+  </form>
+
+</div>
 
 {% endblock %}

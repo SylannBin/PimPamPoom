@@ -14,7 +14,7 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 class ProductController extends Controller
 {
   /**
-   * Display all existing products
+   * Display all existing products of the database
    *
    */
   public function indexAction(Request $request)
@@ -32,7 +32,7 @@ class ProductController extends Controller
   }
 
   /**
-   * Create a product and add it to the database
+   * Add a product into the database
    *
    */
   public function createAction(Request $request)
@@ -118,7 +118,7 @@ class ProductController extends Controller
   }
 
   /**
-   * Modify a product
+   * Change a product in the database
    *
    */
   public function changeAction($id, Request $request)

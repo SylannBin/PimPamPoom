@@ -12,6 +12,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 class CategoryController extends Controller
 {
+  /**
+   * Display all existing categories of the database
+   *
+   */
   public function indexAction(Request $request)
   {
     // Get the categories
@@ -20,13 +24,22 @@ class CategoryController extends Controller
       ->getRepository('AppBundle:Category')
       ->findAll();
 
+    // Render the view
     return $this->render('AppBundle:Category:index.html.twig', array(
       'categories' => $categories
     ));
   }
 
+  /**
+   * Add a category into the database
+   *
+   */
   public function createAction(Request $request)
   {
+    // Shortcut the entity manager
+    $em = $this->getDoctrine()->getManager();
+
+    // Empty Category
     $category = new Category();
 
     // Build the form
@@ -38,13 +51,8 @@ class CategoryController extends Controller
       ->add('save', SubmitType::class)
       ->getForm();
 
-    // Handle user input
-	  $form->handleRequest($request);
-
     // If no errors
-    if ($form->isValid()) {
-      //shortcut
-      $em = $this->getDoctrine()->getManager();
+    if ($form->handleRequest($request)->isValid()) {
       // Update the database
       $em->persist($category);
       $em->flush();
@@ -55,7 +63,7 @@ class CategoryController extends Controller
         ->getFlashBag()
         ->add('notice', 'Category registered successfully.');
 
-      // Redirect
+      // Redirect to main page
       return $this->redirect($this->generateUrl('app_categories'));
     }
     // Render the form
@@ -64,9 +72,13 @@ class CategoryController extends Controller
     ));
   }
 
+  /**
+   * Delete a category from the database
+   *
+   */
   public function deleteAction($id, Request $request)
   {
-    // shortcut
+    // Shortcut the entity manager
     $em = $this->getDoctrine()->getManager();
 
     // Get Category
@@ -89,17 +101,14 @@ class CategoryController extends Controller
       // Update database
       $em->remove($category);
       $em->flush();
-
       // Notify the view
       $request
         ->getSession()
         ->getFlashBag()
         ->add('info', "Category deleted successfully.");
-      
-      // Redirect
+      // Redirect to main page
       return $this->redirect($this->generateUrl('app_categories'));
     }
-
     // Render delete confirmation page
     return $this->render('AppBundle:Category:delete.html.twig', array(
       'category' => $category,
@@ -107,9 +116,13 @@ class CategoryController extends Controller
     ));
   }
 
+  /**
+   * Change a category in the database
+   *
+   */
   public function changeAction($id, Request $request)
   {
-    // Shortcut
+    // Shortcut the entity manager
     $em = $this->getDoctrine()->getManager();
 
     // Get Category
@@ -139,12 +152,11 @@ class CategoryController extends Controller
         ->getSession()
         ->getFlashBag()
         ->add('notice', 'Category changed successfully.');
-      // redirect
+      // redirect to main page
       return $this->redirect($this->generateUrl('app_categories', array(
         'id' => $category->getId()
       )));
     }
-
     // Else: Render a new form
     return $this->render('AppBundle:Category:change.html.twig', array(
       'form'   => $form->createView(),
