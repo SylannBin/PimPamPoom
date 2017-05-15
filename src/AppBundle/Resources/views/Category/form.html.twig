@@ -1,0 +1,45 @@
+<div class="well">
+  {# Form Init #}
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+  {# Initial errors #}
+  {{ form_errors(form) }}
+  
+  {# Label (english) #}
+  <div class="form-group">
+    {{ form_label(form.labelEn, "Label", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.labelEn) }}
+    <div class="col-sm-3">
+      {{ form_widget(form.labelEn, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+  
+  {# Libellé (french) #}
+  <div class="form-group">
+    {{ form_label(form.labelFr, "Libellé", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.labelFr) }}
+    <div class="col-sm-3">
+      {{ form_widget(form.labelFr, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+  
+  {# Etikett (german) #}
+  <div class="form-group">
+    {{ form_label(form.labelDe, "Etikett", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.labelDe) }}
+    <div class="col-sm-3">
+      {{ form_widget(form.labelDe, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Cancel #}
+  <a href="{{ path('app_categories') }}" class="btn btn-default">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Cancel
+  </a>
+  {# Save #}
+  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+  {# Generates any remaining content of the form #}
+  {{ form_rest(form) }}
+  {# Closes the Form #}
+  {{ form_end(form) }}
+</div>

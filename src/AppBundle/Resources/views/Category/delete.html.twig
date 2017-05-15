@@ -6,7 +6,15 @@
 <h2>Category removal</h2>
 
   {% block ocplatform_body %}
-  <div class="well ppp-middle-form">
+  <div class="ppp-middle-form">
+    {% if category.products | length > 0 %}
+
+    <div class="alert alert-info">
+      You can't delete this category.<br/>
+      It is currently <strong>used by {{ category.products | length }} products</strong>
+    </div>
+
+    {% else %}
 
     <div class="alert alert-danger">
       <strong>Attention!</strong> Do you really want to delete the category <strong>"{{ category.labelEn }}"</strong>?
@@ -23,6 +31,8 @@
 
       {{ form_rest(form) }}
     </form>
+
+    {% endif %}
   </div>
   {% endblock %}
 

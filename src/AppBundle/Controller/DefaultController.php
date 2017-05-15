@@ -9,13 +9,16 @@ class DefaultController extends Controller
 {
     public function indexAction(Request $request)
     {
-        $nbProducts = 10;
-        $nbCategories = 10;
+        // Get all products
+        $products = $this->getDoctrine()->getRepository("AppBundle:Product")->findAll();
 
+        // Get all categories
+        $categories = $this->getDoctrine()->getRepository("AppBundle:Category")->findAll();
 
-       return $this->render('AppBundle:Default:index.html.twig', array(
-           "nbProducts" => $nbProducts,
-           "nbCategories" => $nbCategories
-       ));
+        // Render the view
+        return $this->render('AppBundle:Default:index.html.twig', array(
+            "nbProducts" => count($products),
+            "nbCategories" => count($categories)
+        ));
     }
 }

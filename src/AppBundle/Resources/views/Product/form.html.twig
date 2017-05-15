@@ -1,0 +1,39 @@
+<div class="well">
+  {# Form Init #}
+  {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+  {# Initial errors #}
+  {{ form_errors(form) }}
+
+  {# Tabs panels #}
+  {% include "AppBundle:Product:tabs.html.twig" %}
+  
+  {# Category #}
+  <div class="form-group">
+    {{ form_label(form.category, "Category", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.category) }}
+    <div class="col-sm-3">
+      {{ form_widget(form.category, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Price #}
+  <div class="form-group">
+    {{ form_label(form.price, "Price", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.price) }}
+    <div class="col-sm-3">
+      {{ form_widget(form.price, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Cancel #}
+  <a href="{{ path('app_products') }}" class="btn btn-default">
+    <span class="glyphicon glyphicon-chevron-left"></span>
+    Cancel
+  </a>
+  {# Save #}
+  {{ form_widget(form.save, {'attr': {'class': 'btn btn-primary'}}) }}
+  {# Generates any remaining content of the form #}
+  {{ form_rest(form) }}
+  {# Closes the Form #}
+  {{ form_end(form) }}
+</div>

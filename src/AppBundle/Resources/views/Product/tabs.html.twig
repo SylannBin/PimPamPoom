@@ -1,0 +1,88 @@
+{% extends "AppBundle::base_tabs.html.twig" %}
+
+{% block tabpanel_en %}
+  {# Label | libellé | Etikett #}
+  <div class="form-group">
+    {{ form_label(form.labelEn, "Label", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.labelEn) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.labelEn, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Description | Description | Beschreibung #}
+  <div class="form-group">
+    {{ form_label(form.descriptionEn, "Description", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.descriptionEn) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.descriptionEn, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Technical | Technique | Technische #}
+  <div class="form-group">
+    {{ form_label(form.technicalEn, "Technical", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.technicalEn) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.technicalEn, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endblock %}
+
+{% block tabpanel_fr %}
+  {# Label | libellé | Etikett #}
+  <div class="form-group">
+    {{ form_label(form.labelFr, "libellé", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.labelFr) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.labelFr, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+
+  {# Description | Description | Beschreibung #}
+  <div class="form-group">
+    {{ form_label(form.descriptionFr, "Description", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.descriptionFr) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.descriptionFr, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+  
+  {# Technical | Technique | Technische #}
+  <div class="form-group">
+    {{ form_label(form.technicalFr, "Technique", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.technicalFr) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.technicalFr, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endblock %}
+
+{% block tabpanel_de %}
+  {# Label | libellé | Etikett #}
+  <div class="form-group">
+    {{ form_label(form.labelDe, "Etikett", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.labelDe) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.labelDe, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+  
+  {# Description | Description | Beschreibung #}
+  <div class="form-group">
+    {{ form_label(form.descriptionDe, "Beschreibung", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.descriptionDe) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.descriptionDe, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+  
+  {# Technical | Technique | Technische #}
+  <div class="form-group">
+    {{ form_label(form.technicalDe, "Technische", {'label_attr': {'class': 'col-sm-3 control-label'}}) }}
+    {{ form_errors(form.technicalDe) }}
+    <div class="col-sm-9">
+      {{ form_widget(form.technicalDe, {'attr': {'class': 'form-control'}}) }}
+    </div>
+  </div>
+{% endblock %}

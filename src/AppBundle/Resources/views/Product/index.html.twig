@@ -24,7 +24,7 @@
           
           <tr class="ppp-action-container">
             <td>{{ p.id }}</td>
-            <td>{{ p.category.labelEn is null ? "-" : p.category.labelEn }}</td>
+            <td>{{ p.category is null ? "-" : p.category.labelEn }}</td>
             
             {% if p.labelEn is null %}
             <td class="ppp-not-translated">Not translated</td>
